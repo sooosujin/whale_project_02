@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: "\uACE0\uB798|\uACE0\uB798Action"
-      takeName: "\uACE0\uB798|\uACE0\uB798Action"
+      name: "\uC544\uB9C8\uD29C\uC5B4|\uC544\uB9C8\uD29C\uC5B4Action (1)"
+      takeName: "\uC544\uB9C8\uD29C\uC5B4|\uC544\uB9C8\uD29C\uC5B4Action"
       internalID: -8591932265376934413
       firstFrame: 0
-      lastFrame: 0
+      lastFrame: 2514
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -92,7 +92,7 @@ ModelImporter:
       name: "\uC544\uB9C8\uD29C\uC5B4|\uC544\uB9C8\uD29C\uC5B4Action"
       takeName: "\uC544\uB9C8\uD29C\uC5B4|\uC544\uB9C8\uD29C\uC5B4Action"
       internalID: 8100012866077981208
-      firstFrame: 0
+      firstFrame: 72
       lastFrame: 2514
       wrapMode: 0
       orientationOffsetY: 0
@@ -101,7 +101,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
