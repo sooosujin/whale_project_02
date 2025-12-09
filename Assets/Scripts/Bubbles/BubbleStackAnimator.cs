@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class BubbleStackAnimator : MonoBehaviour
 {
-    public float fallHeight = 3f;       // 얼마나 위에서 떨어질지 (Y 방향)
-    public float fallDuration = 0.5f;   // 한 개가 떨어지는 시간
-    public float delayBetween = 0.15f;  // 다음 구슬까지 대기 시간
-    public WhaleMover whaleMover;       // 고래 움직임 스크립트
+    public float fallHeight = 3f;
+    public float fallDuration = 0.5f;
+    public float delayBetween = 0.15f;
+    public WhaleMover whaleMover;
 
-    private Transform[] bubbles;        // 자식 구슬들
-    private Vector3[] targetPositions;  // 원래 자리
+    private Transform[] bubbles;
+    private Vector3[] targetPositions;
+
+    // ▶ 새로 추가: 마지막에 쌓인 구슬
+    private Transform lastBubble;
 
     void Start()
     {
@@ -17,7 +20,6 @@ public class BubbleStackAnimator : MonoBehaviour
         bubbles = new Transform[count];
         targetPositions = new Vector3[count];
 
-        // 자식 구슬들 정보 저장
         for (int i = 0; i < count; i++)
         {
             Transform b = transform.GetChild(i);
@@ -25,7 +27,6 @@ public class BubbleStackAnimator : MonoBehaviour
             targetPositions[i] = b.position;
         }
 
-        // 애니메이션 시작
         StartCoroutine(PlayStackAnimation());
     }
 
@@ -37,26 +38,32 @@ public class BubbleStackAnimator : MonoBehaviour
             Vector3 target = targetPositions[i];
             Vector3 start = target + Vector3.up * fallHeight;
 
-            // 시작 위치를 위로 올려 놓기
             b.position = start;
 
             float t = 0f;
             while (t < 1f)
             {
                 t += Time.deltaTime / fallDuration;
-                float tt = Mathf.SmoothStep(0f, 1f, t); // 살짝 부드럽게
+                float tt = Mathf.SmoothStep(0f, 1f, t);
                 b.position = Vector3.Lerp(start, target, tt);
                 yield return null;
             }
 
             b.position = target;
+
+            // ▶ 마지막에 떨어진 구슬 기억해 두기
+            lastBubble = b;
+
             yield return new WaitForSeconds(delayBetween);
         }
 
-        // 모든 구슬 쌓기 끝나면 고래 출발
+        // ▶ 모든 구슬이 다 떨어지면,
+        //    고래에게 "이 구슬을 물고 가"라고 알려주기
         if (whaleMover != null)
         {
             whaleMover.BeginMove();
         }
+
     }
+    
 }
