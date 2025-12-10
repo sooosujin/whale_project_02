@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1295997832469541438}
   - component: {fileID: 4097750632414990681}
   - component: {fileID: -2765072731432673204}
+  - component: {fileID: -2465121004724108642}
   m_Layer: 0
   m_Name: TestBubblePrefab
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 25a3eb1698790404b9d600f50d5718a5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,3 +137,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2465121004724108642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471568093961783240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a33a06f42de944da31843e0aa7c99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseRadius: 1.5
+  radiusGrow: 10
+  verticalJitter: 1

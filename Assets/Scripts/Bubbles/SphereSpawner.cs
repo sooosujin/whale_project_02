@@ -4,7 +4,7 @@ using UnityEngine;
 public class SphereSpawner : MonoBehaviour
 {
     public GameObject spherePrefab;      // 구 프리팹
-    public Transform[] spawnPoints;      // 쌓일 위치들
+    public Transform[] spawnPoints;      // 쌓일 위치들z
     public float spawnInterval = 1.0f;   // 몇 초 간격으로 생성할지
     public WhaleMover whaleMover;        // 고래 이동 스크립트 참조
 
