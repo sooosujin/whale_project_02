@@ -25,39 +25,27 @@ public class SimpleBubbleSpawner : MonoBehaviour
     }
 
     private void SpawnOne()
+{
+    if (bubblePrefab == null || bubbleParent == null)
     {
-        if (bubblePrefab == null || bubbleParent == null)
-        {
-            Debug.LogError("SimpleBubbleSpawner: bubblePrefab 또는 bubbleParent가 비었습니다.");
-            return;
-        }
-
-        // ★ 메인 카메라 앞쪽에 생성 ★
-        Camera cam = Camera.main;
-        Vector3 spawnPos;
-
-        if (cam != null)
-        {
-            float distance = 15f;      // 카메라에서 앞쪽으로 15
-            spawnPos = cam.transform.position
-                       + cam.transform.forward * distance
-                       + Vector3.up * 3f;   // 살짝 위로
-        }
-        else
-        {
-            spawnPos = new Vector3(0, 5, 0);
-        }
-
-        GameObject bubble = Instantiate(
-            bubblePrefab,
-            spawnPos,
-            Quaternion.identity,
-            bubbleParent
-        );
-
-        bubble.name = $"SpawnedBubble_{spawnedCount + 1}";
-        spawnedCount++;
-
-        Debug.Log($"Bubble #{spawnedCount} 생성 at {spawnPos}");
+        Debug.LogError("SimpleBubbleSpawner: bubblePrefab 또는 bubbleParent가 비었습니다.");
+        return;
     }
+
+    // ★ 이 오브젝트(BubbleSpawner)의 위치에서 생성 ★
+    Vector3 spawnPos = transform.position;
+
+    GameObject bubble = Instantiate(
+        bubblePrefab,
+        spawnPos,
+        Quaternion.identity,
+        bubbleParent
+    );
+
+    bubble.name = $"SpawnedBubble_{spawnedCount + 1}";
+    spawnedCount++;
+
+    Debug.Log($"Bubble #{spawnedCount} 생성 at {spawnPos}");
+}
+
 }
